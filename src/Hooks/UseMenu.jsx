@@ -1,0 +1,16 @@
+import { useEffect, useState } from "react"
+
+const UseMenu=()=>{
+ const [menus,setMenu]=useState([])
+const [loading,setLoading]=useState(true)
+    useEffect(()=>{
+        fetch('Menu.json')
+        .then(res=>res.json())
+        .then(data=>{
+             setMenu(data)
+           setLoading(false)
+        })
+    },[])
+    return [menus,loading]
+}
+export default UseMenu;

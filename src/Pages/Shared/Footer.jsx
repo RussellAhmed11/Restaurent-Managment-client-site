@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Footer = () => {
     return (
@@ -6,15 +5,14 @@ const Footer = () => {
         <div>
             <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
                 <aside className=''>
-                   
-                        <h3 className=''>CONTACT US</h3>
+                        <h3 className='text-center'>CONTACT US</h3>
                         <p>123 ABS Street, Uni 21, Bangladesh </  p>
                         <p>+88 123456789</  p>
                         <p>Mon - Fri: 08:00 - 22:00</  p>
                         <p>Sat - Sun: 10:00 - 23:00</p>
                     
                 </aside>
-                <nav className='w-full'>
+                <nav>
                     <h6 className="footer-title">Social</h6>
                     <div className="grid grid-flow-col gap-4">
                         <a>
@@ -54,7 +52,7 @@ const Footer = () => {
                 </nav>
 
             </footer>
-            <footer className="footer sm:footer-horizontal footer-center bg-neutral text-neutral-content p-4">
+            <footer className="footer sm:footer-horizontal footer-center bg-neutralp-4">
                 <aside>
                     <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
                 </aside>

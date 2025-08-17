@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
 import Cards from "../Cards/Cards";
 import Category from "../Category/Category";
@@ -9,12 +10,15 @@ import Teastimonials from "../Teastimonials/Teastimonials";
 const Home = () => {
     return (
         <div>
-           <Banner></Banner>
-           <Category></Category>
-           <PopularMenu></PopularMenu>
-           <Cards></Cards>
-           <Features></Features>
-           <Teastimonials></Teastimonials>
+            <Helmet>
+                <title>Bissro Boss | Menu</title>
+            </Helmet>
+            <Banner></Banner>
+            <Category></Category>
+            <PopularMenu></PopularMenu>
+            <Cards></Cards>
+            <Features></Features>
+            <Teastimonials></Teastimonials>
         </div>
     );
 };
