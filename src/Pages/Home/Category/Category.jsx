@@ -1,6 +1,7 @@
 import 'swiper/css';
 import 'swiper/css/pagination'
-import 'swiper/css/free-mode';;
+import 'swiper/css/free-mode';
+
 import { FreeMode, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import slide1 from '../../../assets/home/slide1.jpg'
@@ -11,19 +12,19 @@ import slide5 from '../../../assets/home/slide5.jpg'
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 const Category = () => {
     return (
-       <section>
-        <SectionTitle subHeading={"From 11.00am to 10:00pm"} heading={"Order Online"}></SectionTitle>
-        <Swiper
-            slidesPerView={4}
-            spaceBetween={30}
-            centeredSlides={true}
-            pagination={{
-                clickable: true,
-            }}
-            modules={[FreeMode,Pagination]}
-            className="mySwiper mb-24 w-8/10 mx-auto"
-        >
-            <SwiperSlide><img src={slide1} alt="" />
+        <section>
+            <SectionTitle subHeading={"From 11.00am to 10:00pm"} heading={"Order Online"}></SectionTitle>
+            <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        freeMode={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[FreeMode, Pagination]}
+        className="mySwiper mb-24 w-8/10 mx-auto"
+      >
+        <SwiperSlide><img src={slide1} alt="" />
                 <h3 className='text-3xl uppercase text-center -mt-15 text-white'>Salads</h3>
             </SwiperSlide>
             <SwiperSlide>
@@ -39,9 +40,8 @@ const Category = () => {
                 <img src={slide5} alt="" /> 
                 <h3 className='text-3xl uppercase text-center -mt-15 text-white pb-15'>Salads</h3></SwiperSlide>
 
-
-        </Swiper>
-       </section> 
+      </Swiper>
+        </section>
     );
 };
 
