@@ -16,7 +16,9 @@ const MenuCategory = ({items,title,Img}) => {
         </div>
       {
         title &&   <Link to={`/order/${title}`}>
-         <button className='btn btn-outline border-0 border-b-4 mt-4'>Order Now</button>
+        <div className='flex flex-col items-center mb-5'>
+             <button className='btn btn-outline border-0 border-b-4 mt-4'>Order Now</button>
+        </div>
         </Link>
       }
         </div>
