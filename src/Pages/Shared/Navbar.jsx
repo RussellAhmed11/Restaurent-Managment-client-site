@@ -1,11 +1,32 @@
-import { Link } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContex } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2'
 const Navbar = () => {
+    const navigate=useNavigate()
+    const { user, signOutUser } = useContext(AuthContex);
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+               navigate("/")
+            })
+            .catch(error => {
+                console.log(error.messege)
+            })
+    }
     const navOption = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/menu'>Our Menu</Link></li>
+        <li><Link to='/screct'>Screct</Link></li>
         <li><Link to='/order/salad'>Our Food</Link></li>
-       
+        {
+            
+            user ? <> 
+            <span>{user?.displayName}</span>
+            <button onClick={handleSignOut} className='btn btn-ghost'>SignOut</button>
+            </> : <> <li><Link to='/login'>Signin</Link></li></>
+        }
+
     </>
     return (
         <div className="navbar fixed z-10 bg-opacity-30 text-white shadow-sm w-19/20">
