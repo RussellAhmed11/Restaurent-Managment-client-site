@@ -1,14 +1,16 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContex } from '../../Provider/AuthProvider';
-import Swal from 'sweetalert2'
+import { FaShoppingCart } from "react-icons/fa";
+import UseCart from '../../Hooks/UseCart';
 const Navbar = () => {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const { user, signOutUser } = useContext(AuthContex);
+    const [cart]=UseCart();
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
-               navigate("/")
+                navigate("/")
             })
             .catch(error => {
                 console.log(error.messege)
@@ -19,11 +21,16 @@ const Navbar = () => {
         <li><Link to='/menu'>Our Menu</Link></li>
         <li><Link to='/screct'>Screct</Link></li>
         <li><Link to='/order/salad'>Our Food</Link></li>
+        <li><Link to='/'><button className="btn">
+            <FaShoppingCart className='mt-2'></FaShoppingCart> <div className="badge badge-sm badge-secondary">+{cart.length}</div>
+        </button>
+
+        </Link></li>
         {
-            
-            user ? <> 
-            <span>{user?.displayName}</span>
-            <button onClick={handleSignOut} className='btn btn-ghost'>SignOut</button>
+
+            user ? <>
+                {/* <span>{user?.displayName}</span> */}
+                <button onClick={handleSignOut} className='btn btn-ghost'>SignOut</button>
             </> : <> <li><Link to='/login'>Signin</Link></li></>
         }
 
