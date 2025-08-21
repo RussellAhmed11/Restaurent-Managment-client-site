@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import Screct from "../Pages/Shared/Screed/Screct";
 import DashBoard from "../Layout/DashBoard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
+import AllUsers from "../Pages/Dashboard/Cart/AllUsers/AllUsers";
 
 
 
@@ -50,11 +51,15 @@ export const router = createBrowserRouter([
     ]
   },{
     path:'/dashboard',
-    element:<DashBoard></DashBoard>,
+    element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
     children:[
       {
         path:'cart',
         element:<Cart></Cart>
+      },
+      {
+        path:'allusers',
+        element:<AllUsers></AllUsers>
       }
     ]
   }

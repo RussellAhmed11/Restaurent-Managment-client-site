@@ -4,12 +4,15 @@ import { useForm } from "react-hook-form";
 import { AuthContex } from "../../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseAxiosPublic from "../../Hooks/UseAxiosPublic";
+import SocialLogin from "../../Components/Social/SocialLogin";
 
 
 const SignUp = () => {
+    const axiosPublic = UseAxiosPublic()
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContex);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const onSubmit = (data) => {
         createUser(data.email, data.password)
             .then(result => {
@@ -17,16 +20,27 @@ const SignUp = () => {
                 console.log(logUser)
                 updateUserProfile(data.name, data.photourl)
                     .then(() => {
-                        console.log('user profile info updated')
-                        reset()
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "Create user Success",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                      navigate("/")
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            photo: data.photourl
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('usr info add to data base')
+                                    reset()
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "Create user Success",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate("/")
+                                }
+                            })
+
                     })
             })
 
@@ -70,7 +84,8 @@ const SignUp = () => {
                                 <input type="submit" value="Sign Up" className="btn btn-neutral mt-4" />
                             </div>
                         </form>
-                        <p><small>Already have account?<Link tp="login">SignIn</Link></small></p>
+                        <p className="p-4"><small>Already have account?<Link to="/login">SignIn</Link></small></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

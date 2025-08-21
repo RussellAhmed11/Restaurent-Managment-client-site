@@ -3,6 +3,7 @@ import { Link, replace, useLocation, useNavigate, useSearchParams } from 'react-
 import { LoadCanvasTemplate, loadCaptchaEnginge, validateCaptcha } from 'react-simple-captcha';
 import { AuthContex } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../../Components/Social/SocialLogin';
 
 const Login = () => {
    
@@ -65,7 +66,8 @@ const Login = () => {
                             <input disabled={disabled} type="submit" className='btn btn-neutral mt-4' value="Login" name="" id="" />
                         </div>
                     </form>
-                    <p><small>New Here? <Link to='/signup'>Create an account</Link></small></p>
+                    <p className='p-4'><small>New Here? <Link to='/signup'>Create an account</Link></small></p>
+                    <SocialLogin></SocialLogin>
                 </div>
             </div>
         </div>
