@@ -14,6 +14,10 @@ import Screct from "../Pages/Shared/Screed/Screct";
 import DashBoard from "../Layout/DashBoard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/Cart/AllUsers/AllUsers";
+import AddItems from "../Pages/Dashboard/Cart/AddItems/AddItems";
+import AdminRoute from "../Hooks/AdminRoute";
+import ManageItems from "../Pages/Dashboard/ManageItems/ManageItems";
+import UpdateItems from "../Pages/Dashboard/UpdateItems/UpdateItems";
 
 
 
@@ -59,7 +63,21 @@ export const router = createBrowserRouter([
       },
       {
         path:'allusers',
-        element:<AllUsers></AllUsers>
+        element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+      }
+      ,
+      {
+        path:'addItems',
+        element:<AdminRoute><AddItems></AddItems></AdminRoute>
+      },
+      {
+        path:'manageItems',
+        element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
+      },
+      {
+        path:'updateItems/:id',
+        element:<AdminRoute><UpdateItems></UpdateItems></AdminRoute>,
+        loader:({params})=>fetch(`http://localhost:5000/menu/${params.id}`)
       }
     ]
   }
