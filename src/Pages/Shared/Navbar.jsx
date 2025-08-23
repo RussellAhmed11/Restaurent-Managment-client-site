@@ -6,7 +6,7 @@ import UseCart from '../../Hooks/UseCart';
 const Navbar = () => {
     const navigate = useNavigate()
     const { user, signOutUser } = useContext(AuthContex);
-    const [refetch,cart]=UseCart();
+    const [cart,refetch]=UseCart();
     const handleSignOut = () => {
         signOutUser()
             .then(() => {

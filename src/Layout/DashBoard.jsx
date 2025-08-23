@@ -52,9 +52,9 @@ const DashBoard = () => {
                                 <FaAd></FaAd>
                                 Add a Review</NavLink></li>
 
-                            <li><NavLink to="/dashboard/booking">
+                            <li><NavLink to="/dashboard/paymentHistory">
                                 <FaList></FaList>
-                                My Booking</NavLink></li>
+                                Payment Histroy</NavLink></li>
                         </>
                     }
 
