@@ -26,7 +26,7 @@ const ChackeOutForm = () => {
                     setClientSerct(res.data.clientSecret)
                 })
         }
-    }, [])
+    }, [axiosSecure,totalPrice])
     const handlePaymentFormSubmit = async (event) => {
         event.preventDefault();
         if (!stripe || !elements) {

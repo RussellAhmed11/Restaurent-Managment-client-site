@@ -15,7 +15,7 @@ const DashBoard = () => {
                 <ul className="menu p-4">
                     {
                         isAdmin ? <>
-                            <li><NavLink to="/dashboard/adminhome">
+                            <li><NavLink to="/dashboard/adminHome">
                                 <FaHome></FaHome>
                                 Admin Home</NavLink></li>
 
@@ -36,11 +36,11 @@ const DashBoard = () => {
                                 All Users</NavLink></li>
 
                         </> : <>
-                            <li><NavLink to="/dashboard/home">
+                            <li><NavLink to="/dashboard/userHome">
                                 <FaHome></FaHome>
                                 User Home</NavLink></li>
 
-                            <li><NavLink to="/dashboard/reservation">
+                            <li><NavLink to="/dashboard/reservatio">
                                 <FaCalendar></FaCalendar>
                                 Reservation</NavLink></li>
 

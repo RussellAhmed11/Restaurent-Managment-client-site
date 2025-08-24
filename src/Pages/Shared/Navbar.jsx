@@ -1,12 +1,14 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AuthContex } from '../../Provider/AuthProvider';
 import { FaShoppingCart } from "react-icons/fa";
 import UseCart from '../../Hooks/UseCart';
+import useAuth from '../../Hooks/useAuth';
+import UseAdmin from '../../Hooks/UseAdmin';
 const Navbar = () => {
     const navigate = useNavigate()
-    const { user, signOutUser } = useContext(AuthContex);
+    const { user, signOutUser } = useAuth();
     const [cart,refetch]=UseCart();
+    const [admin]=UseAdmin()
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
@@ -20,11 +22,19 @@ const Navbar = () => {
     const navOption = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/menu'>Our Menu</Link></li>
-        <li><Link to='/screct'>Screct</Link></li>
         <li><Link to='/order/salad'>Our Food</Link></li>
-        <li><Link to='/dashboard/cart'><button className="btn">
-            <FaShoppingCart className='mt-2'></FaShoppingCart> <div className="badge badge-sm badge-secondary">+{cart.length}</div>
-        </button>
+        {
+            user && admin && <li><Link to='/dashboard/adminHome'>Dashboard</Link></li>
+           
+        }
+        {
+            user && !admin && <li><Link to='/dashboard/userHome'>Dashboard</Link></li>
+           
+        }
+
+        <li ><Link to='/dashboard/cart' className='btn btn-ghost'>
+            <FaShoppingCart className=''></FaShoppingCart> <div className="badge badge-sm badge-secondary">+{cart.length}</div>
+        
 
         </Link></li>
         {
